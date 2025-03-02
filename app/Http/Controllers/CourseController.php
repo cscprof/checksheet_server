@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CoreCourse;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -12,40 +13,42 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
-        return $courses;
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return Course::
+        with('prereqs')
+            ->get();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Course $course)
+    public function show(Request $request)
     {
-        //
+
+        $id = $request->course;
+        $course = Course::
+        where('course_id', '=', $id)
+            ->with('prereqs')
+            ->get();
+
+        return $course;
     }
 
     /**
-     * Update the specified resource in storage.
+     * Display core Courses
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function update(Request $request, Course $course)
+    public function coreCourses()
     {
-        //
+        $courses = CoreCourse::with('theme')
+            ->with('course')
+            ->get();
+
+        // dd($courses);
+
+        return $courses;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Course $course)
-    {
-        //
-    }
+
+
 }

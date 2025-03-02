@@ -9,6 +9,8 @@ class Course extends Model
 
      protected $table = 'courses';
 
+     protected $primaryKey = 'course_id';
+
      /**
      * The attributes that are mass assignable.
      *
@@ -22,5 +24,15 @@ class Course extends Model
         'semester_id',
     ];
 
+    public function prereqs(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+
+        return $this->belongsToMany(
+            Course::class,
+            'prerequisites',
+            'prereq_course_id',
+            'course_id'
+        );
+    }
 
 }

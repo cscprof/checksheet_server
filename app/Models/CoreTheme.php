@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Psy\Output\Theme;
 
-class CourseStatus extends Model
+class CoreTheme extends Model
 {
-    protected $table = 'course_statuses';
+    protected $table = 'core_themes';
 
-    protected $primaryKey = 'course_status_id';
+    protected $primaryKey = 'core_theme_id';
 
     /**
      * The attributes that are mass assignable.
@@ -16,6 +17,9 @@ class CourseStatus extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'course_status',
+        'name',
+        'min_credits',
+        'max_credits',
     ];
+
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prequisite;
+use App\Models\CoreCourse;
 use Illuminate\Http\Request;
 
-class PrequisiteController extends Controller
+class CoreCourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class PrequisiteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Prequisite $prequisite)
+    public function show(CoreCourse $coreCourse)
     {
         //
     }
@@ -34,7 +34,7 @@ class PrequisiteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prequisite $prequisite)
+    public function update(Request $request, CoreCourse $coreCourse)
     {
         //
     }
@@ -42,7 +42,7 @@ class PrequisiteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prequisite $prequisite)
+    public function destroy(CoreCourse $coreCourse)
     {
         //
     }

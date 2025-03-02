@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CourseStatus;
+use App\Models\Semester;
 use Illuminate\Http\Request;
 
-class CourseStatusController extends Controller
+class SemesterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return CourseStatus::all();
+        return Semester::all();
     }
-
 
 }

@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class MyUser extends Model
 {
-    protected $table = 'students';
+    protected $table = 'users';
 
-    protected $primaryKey = 'student_id';
+    protected $primaryKey = 'user_guid';
 
+    protected $keyType = 'string';
 
      /**
      * The attributes that are mass assignable.
@@ -19,12 +20,11 @@ class Student extends Model
     protected $fillable = [
         'firstname',
         'lastname',
-        'preferred_name',
-        'email',
-        'math_proficient',
-        'reading_proficient',
-        'foreign_language',
-        'is_active',
+        'auth_token',
+        'token_expire',
+        'email_address',
+        'username',
+        'password',
     ];
 
         /**
@@ -33,6 +33,9 @@ class Student extends Model
      * @var list<string>
      */
     protected $hidden = [
-        'account_guid',
+        'password',
+        'remember_token',
     ];
+
+
 }

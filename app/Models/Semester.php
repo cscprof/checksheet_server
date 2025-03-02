@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CourseStatus extends Model
+class Semester extends Model
 {
-    protected $table = 'course_statuses';
+    protected $table = 'semesters';
 
-    protected $primaryKey = 'course_status_id';
+    protected $primaryKey = 'semester_id';
 
     /**
      * The attributes that are mass assignable.
@@ -16,6 +16,6 @@ class CourseStatus extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'course_status',
+        'semester_name',
     ];
 }
