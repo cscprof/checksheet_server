@@ -35,4 +35,19 @@ class Student extends Model
     protected $hidden = [
         'account_guid',
     ];
+
+    public function majors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        $x = $this->belongsToMany(
+            Major::class,
+            'major_students',
+            'student_id',
+            'major_id',
+            null,
+            'major_id'
+        );
+
+        return $x;
+    }
+
 }

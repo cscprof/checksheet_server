@@ -16,8 +16,10 @@ class StudentController extends Controller
     {
         $token = $request->header('x-token');
 
-        return Student::where('account_guid',$token)
+        return Student::with('majors')
+            ->where('account_guid',$token)
             ->get();
+
     }
 
     /**
