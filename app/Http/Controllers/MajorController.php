@@ -15,4 +15,12 @@ class MajorController extends Controller
         return Major::all();
     }
 
+    public function majorCourses($id)
+    {
+        return Major::with('courses')
+            ->where("major_id", $id)
+            ->get();
+    }
+
+
 }

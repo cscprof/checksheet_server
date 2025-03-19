@@ -21,6 +21,8 @@ Route::resource('users', MyUserController::class);
 /**
  * Course Related Routes
  */
+Route::get('/courses/major/{id}', [MajorController::class, 'majorCourses']);
+Route::get('/courses/minor/{id}', [MinorController::class, 'minorCourses']);
 Route::get('/courses/core', [CourseController::class, 'coreCourses']);
 Route::resource('courses', CourseController::class);
 Route::resource('corethemes', CoreThemeController::class);
@@ -30,6 +32,8 @@ Route::resource('corethemes', CoreThemeController::class);
  * Student Related Routes
  */
 Route::resource('students', StudentController::class);
+
+
 
 /**
  * Dropdown Routes

@@ -16,35 +16,10 @@ class MinorController extends Controller
         return $minors;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function minorCourses($id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Minor $minor)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Minor $minor)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Minor $minor)
-    {
-        //
+        return Minor::with('courses')
+            ->where("minor_id", $id)
+            ->get();
     }
 }

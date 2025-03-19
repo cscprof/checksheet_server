@@ -9,6 +9,8 @@ class Major extends Model
 
      protected $table = 'majors';
 
+     protected $primaryKey = 'major_id';
+
      /**
      * The attributes that are mass assignable.
      *
@@ -18,6 +20,18 @@ class Major extends Model
         'major_name',
         'major_abberviation',
     ];
+
+    public function courses(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            Course::class,
+            'course_majors',
+            'major_id',
+            'course_id',
+            null,
+            'course_id'
+        );
+    }
 
 
 }

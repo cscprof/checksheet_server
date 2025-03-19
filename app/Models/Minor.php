@@ -9,6 +9,8 @@ class Minor extends Model
 
      protected $table = 'minors';
 
+     protected $primaryKey = 'minor_id';
+
      /**
      * The attributes that are mass assignable.
      *
@@ -19,5 +21,15 @@ class Minor extends Model
         'minor_abberviation',
     ];
 
-
+    public function courses(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            Course::class,
+            'course_minors',
+            'minor_id',
+            'course_id',
+            null,
+            'course_id'
+        );
+    }
 }
