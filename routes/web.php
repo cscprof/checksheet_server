@@ -9,7 +9,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CoreThemeController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\CourseStatusController;
-
+use App\Http\Controllers\CourseStudentController;
 
 /**
  * Authentication Related
@@ -33,7 +33,11 @@ Route::resource('corethemes', CoreThemeController::class);
  */
 Route::resource('students', StudentController::class);
 
-
+/**
+ * Student to Course mappings
+ */
+Route::put('studentcourses', [CourseStudentController::class, 'myUpdate']);
+Route::resource('studentcourses', CourseStudentController::class);
 
 /**
  * Dropdown Routes

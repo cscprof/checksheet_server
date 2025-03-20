@@ -32,7 +32,6 @@ class StudentController extends Controller
         // Verify GUID is valid
         try {
             $id = User::where('user_guid', $token)->firstOrFail();
-
         } catch (ModelNotFoundException $exception) {
             return response()->json([
                 'error' => 'Unauthorized'
