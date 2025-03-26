@@ -42,7 +42,7 @@ class CourseStudentController extends Controller
             ], 401);
         }
 
-        // Create the new student
+        // Create the new course student mapping
         $data = $request->json()->all();
 
         $courseStudent = new CourseStudent();
@@ -81,6 +81,17 @@ class CourseStudentController extends Controller
      */
     public function myUpdate(Request $request)
     {
+        $token = $request->header('x-token');
+
+        // Verify GUID is valid
+        try {
+            $id = User::where('user_guid', $token)->firstOrFail();
+        } catch (ModelNotFoundException $exception) {
+            return response()->json([
+                'error' => 'Unauthorized'
+            ], 401);
+        }
+
         $data = $request->all();
 
         $courseStudent = CourseStudent::find($data['course_student_id'], 'course_student_id');
@@ -100,6 +111,20 @@ class CourseStudentController extends Controller
      */
     public function destroy(Request $request)
     {
+        $token = $request->header('x-token');
 
+        // Verify GUID is valid
+        try {
+            $id = User::where('user_guid', $token)->firstOrFail();
+        } catch (ModelNotFoundException $exception) {
+            return response()->json([
+                'error' => 'Unauthorized'
+            ], 401);
+        }
+
+        $id = $request->studentcourse;
+        Student::destroy($id);
+
+        return;
     }
 }

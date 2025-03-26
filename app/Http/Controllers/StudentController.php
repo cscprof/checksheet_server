@@ -70,11 +70,59 @@ class StudentController extends Controller
             ->first();
     }
 
+     /**
+     * Update the specified resource in storage.
+     */
+    public function myUpdate(Request $request)
+    {
+        $token = $request->header('x-token');
+
+        // Verify GUID is valid
+        try {
+            $id = User::where('user_guid', $token)->firstOrFail();
+        } catch (ModelNotFoundException $exception) {
+            return response()->json([
+                'error' => 'Unauthorized'
+            ], 401);
+        }
+
+        $data = $request->all();
+
+        $student = student::find($data['student_id'], 'student_id');
+        if (array_key_exists('firstname', $data)) $student->firstname = $data['firstname'];
+        if (array_key_exists('lastname', $data)) $student->lasstname = $data['lastname'];
+        if (array_key_exists('preferred_name', $data)) $student->preferred_name = $data['preferred_name'];
+        if (array_key_exists('email', $data)) $student->email = $data['email'];
+        if (array_key_exists('math_proficient', $data)) $student->math_proficient = $data['math_proficient'];
+        if (array_key_exists('reading_proficient', $data)) $student->reading_proficient = $data['reading_proficient'];
+        if (array_key_exists('foreign_language', $data)) $student->foreign_language = $data['foreign_language'];
+        if (array_key_exists('is_active', $data)) $student->is_active = $data['is_active'];
+
+        $student->save();
+
+        return;
+
+    }
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(Request $request)
     {
-        //
+        $token = $request->header('x-token');
+
+        // Verify GUID is valid
+        try {
+            $id = User::where('user_guid', $token)->firstOrFail();
+        } catch (ModelNotFoundException $exception) {
+            return response()->json([
+                'error' => 'Unauthorized'
+            ], 401);
+        }
+
+        $id = $request->student;
+        Student::destroy($id);
+
+        return;
     }
 }

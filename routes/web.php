@@ -31,6 +31,7 @@ Route::resource('corethemes', CoreThemeController::class);
 /**
  * Student Related Routes
  */
+Route::put('students', [StudentController::class, 'myUpdate']);
 Route::resource('students', StudentController::class);
 
 /**
