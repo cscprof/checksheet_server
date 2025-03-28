@@ -90,7 +90,7 @@ class StudentController extends Controller
 
         $student = student::find($data['student_id'], 'student_id');
         if (array_key_exists('firstname', $data)) $student->firstname = $data['firstname'];
-        if (array_key_exists('lastname', $data)) $student->lasstname = $data['lastname'];
+        if (array_key_exists('lastname', $data)) $student->lastname = $data['lastname'];
         if (array_key_exists('preferred_name', $data)) $student->preferred_name = $data['preferred_name'];
         if (array_key_exists('email', $data)) $student->email = $data['email'];
         if (array_key_exists('math_proficient', $data)) $student->math_proficient = $data['math_proficient'];
