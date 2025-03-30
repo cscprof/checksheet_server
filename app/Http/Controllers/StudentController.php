@@ -43,14 +43,15 @@ class StudentController extends Controller
 
         $student = new Student();
         $student->account_guid = $token;
-        $student->firstname = $data['firstname'];
-        $student->lastname = $data['lastname'];
-        $student->preferred_name = $data['preferred_name'];
-        $student->email = $data['email'];
-        $student->math_proficient = $data['math_proficient'];
-        $student->reading_proficient = $data['reading_proficient'];
-        $student->foreign_language = $data['foreign_language'];
-        $student->is_active = $data['is_active'];
+        if (array_key_exists('account_guid', $data)) $student->account_guid = $data['account_guid'];
+        if (array_key_exists('firstname', $data)) $student->firstname = $data['firstname'];
+        if (array_key_exists('lastname', $data)) $student->lastname = $data['lastname'];
+        if (array_key_exists('preferred_name', $data)) $student->preferred_name = $data['preferred_name'];
+        if (array_key_exists('email', $data)) $student->email = $data['email'];
+        if (array_key_exists('math_proficient', $data)) $student->math_proficient = $data['math_proficient'];
+        if (array_key_exists('reading_proficient', $data)) $student->reading_proficient = $data['reading_proficient'];
+        if (array_key_exists('foreign_language', $data)) $student->foreign_language = $data['foreign_language'];
+        if (array_key_exists('is_active', $data)) $student->is_active = $data['is_active'];
 
         $student->save();
 
