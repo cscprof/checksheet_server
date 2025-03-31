@@ -17,6 +17,7 @@ class StudentController extends Controller
         $token = $request->header('x-token');
 
         return Student::with('majors')
+            ->with('minors')
             ->where('account_guid',$token)
             ->get();
 
@@ -66,7 +67,9 @@ class StudentController extends Controller
         $token = $request->header('x-token');
         $id = $request->student;
 
-        return Student::where('account_guid',$token)
+        return Student::with('majors')
+            ->with('minors')
+            ->where('account_guid',$token)
             ->where('student_id', $id)
             ->first();
     }

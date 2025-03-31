@@ -38,7 +38,7 @@ class Student extends Model
 
     public function majors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        $x = $this->belongsToMany(
+        return $this->belongsToMany(
             Major::class,
             'major_students',
             'student_id',
@@ -46,8 +46,18 @@ class Student extends Model
             null,
             'major_id'
         );
+    }
 
-        return $x;
+    public function minors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            Minor::class,
+            'minor_students',
+            'student_id',
+            'minor_id',
+            null,
+            'minor_id'
+        );
     }
 
 }
