@@ -14,7 +14,8 @@ class CourseController extends Controller
     public function index()
     {
         return Course::
-        with('prereqs')
+            with('prereqs')
+            ->with('prereqsOf')
             ->get();
     }
 
@@ -28,6 +29,7 @@ class CourseController extends Controller
         $course = Course::
         where('course_id', '=', $id)
             ->with('prereqs')
+            ->with('prereqsOf')
             ->get();
 
         return $course;
