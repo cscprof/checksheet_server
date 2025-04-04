@@ -51,6 +51,15 @@ class CourseController extends Controller
         return $courses;
     }
 
+    public function coreCoursesWithPrereqs()
+    {
+        return CoreCourse::with('theme')
+            ->with('course')
+            ->with('course.prereqs')
+            ->with('course.prereqsOf')
+            ->get();
+    }
+
 
 
 }

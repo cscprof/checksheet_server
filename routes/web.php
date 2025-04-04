@@ -21,6 +21,9 @@ Route::resource('users', MyUserController::class);
 /**
  * Course Related Routes
  */
+Route::get('/courses/major/{id}/prereqs', [MajorController::class, 'majorCoursesWithPrereqs']);
+Route::get('/courses/minor/{id}/prereqs', [MinorController::class, 'minorCoursesWithPrereqs']);
+Route::get('/courses/core/prereqs', [CourseController::class, 'coreCoursesWithPrereqs']);
 Route::get('/courses/major/{id}', [MajorController::class, 'majorCourses']);
 Route::get('/courses/minor/{id}', [MinorController::class, 'minorCourses']);
 Route::get('/courses/core', [CourseController::class, 'coreCourses']);

@@ -22,4 +22,13 @@ class MinorController extends Controller
             ->where("minor_id", $id)
             ->get();
     }
+
+    public function minorCoursesWithPrereqs($id)
+    {
+        return Minor::with('courses')
+            ->with('courses.prereqs')
+            ->with('courses.prereqsOf')
+            ->where("minor_id", $id)
+            ->get();
+    }
 }
