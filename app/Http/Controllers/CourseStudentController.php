@@ -123,7 +123,7 @@ class CourseStudentController extends Controller
         }
 
         $id = $request->studentcourse;
-        Student::destroy($id);
+        CourseStudent::destroy($id);
 
         return;
     }
