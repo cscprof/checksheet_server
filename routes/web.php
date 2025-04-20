@@ -14,6 +14,7 @@ use App\Http\Controllers\CourseStudentController;
 /**
  * Authentication Related
  */
+Route::put('/auth/passwordreset', [MyUserController::class, 'resetPassword']);
 Route::post('/auth/login', [MyUserController::class, 'login']);
 Route::post('/auth/logout', [MyUserController::class, 'logout']);
 Route::resource('users', MyUserController::class);

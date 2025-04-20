@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\MyUser;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Models\User;
 
 class MyUserController extends Controller
 {
@@ -55,7 +54,7 @@ class MyUserController extends Controller
 
         // Verify GUID is valid
         try {
-            $user = User::where('user_guid', $token)->firstOrFail();
+            $user = MyUser::where('user_guid', $token)->firstOrFail();
         } catch (ModelNotFoundException $exception) {
             return response()->json([
                 'error' => 'Unauthorized'
