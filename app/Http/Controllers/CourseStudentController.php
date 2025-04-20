@@ -6,6 +6,7 @@ use App\Models\CourseStudent;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use App\Models\MyUser;
 
 class CourseStudentController extends Controller
 {
@@ -35,7 +36,7 @@ class CourseStudentController extends Controller
 
         // Verify GUID is valid
         try {
-            $id = User::where('user_guid', $token)->firstOrFail();
+            $id = MyUser::where('user_guid', $token)->firstOrFail();
         } catch (ModelNotFoundException $exception) {
             return response()->json([
                 'error' => 'Unauthorized'
@@ -85,7 +86,7 @@ class CourseStudentController extends Controller
 
         // Verify GUID is valid
         try {
-            $id = User::where('user_guid', $token)->firstOrFail();
+            $id = MyUser::where('user_guid', $token)->firstOrFail();
         } catch (ModelNotFoundException $exception) {
             return response()->json([
                 'error' => 'Unauthorized'
@@ -115,7 +116,7 @@ class CourseStudentController extends Controller
 
         // Verify GUID is valid
         try {
-            $id = User::where('user_guid', $token)->firstOrFail();
+            $id = MyUser::where('user_guid', $token)->firstOrFail();
         } catch (ModelNotFoundException $exception) {
             return response()->json([
                 'error' => 'Unauthorized'
