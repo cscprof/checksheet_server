@@ -53,6 +53,7 @@ class StudentController extends Controller
         if (array_key_exists('math_proficient', $data)) $student->math_proficient = $data['math_proficient'];
         if (array_key_exists('reading_proficient', $data)) $student->reading_proficient = $data['reading_proficient'];
         if (array_key_exists('foreign_language', $data)) $student->foreign_language = $data['foreign_language'];
+        if (array_key_exists('matriculation_year', $data)) $student->matriculation_year = $data['matriculation_year'];
         if (array_key_exists('is_active', $data)) $student->is_active = $data['is_active'];
 
         $student->save();
@@ -101,6 +102,7 @@ class StudentController extends Controller
         if (array_key_exists('math_proficient', $data)) $student->math_proficient = $data['math_proficient'];
         if (array_key_exists('reading_proficient', $data)) $student->reading_proficient = $data['reading_proficient'];
         if (array_key_exists('foreign_language', $data)) $student->foreign_language = $data['foreign_language'];
+        if (array_key_exists('matriculation_year', $data)) $student->matriculation_year = $data['matriculation_year'];
         if (array_key_exists('is_active', $data)) $student->is_active = $data['is_active'];
 
         $student->save();
