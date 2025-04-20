@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\MyUser;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Models\User;
 
 class MyUserController extends Controller
 {
@@ -42,6 +44,30 @@ class MyUserController extends Controller
     public function logout(Request $request)
     {
        return response('Logged out', 200)->header('Content-Type', 'text/plain');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function resetPassword(Request $request)
+    {
+        $token = $request->header('x-token');
+
+        // Verify GUID is valid
+        try {
+            $user = User::where('user_guid', $token)->firstOrFail();
+        } catch (ModelNotFoundException $exception) {
+            return response()->json([
+                'error' => 'Unauthorized'
+            ], 401);
+        }
+
+        $data = $request->all();
+
+        if (array_key_exists('password', $data)) $user->password = $data['password'];
+
+        return $user->save();
+
     }
 
 }
