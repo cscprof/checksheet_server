@@ -61,4 +61,14 @@ class Student extends Model
         );
     }
 
+    public function credits()
+    {
+        return $this->hasMany(
+            CreditsEarned::class,
+            'student_id',
+            'student_id',
+
+        );
+    }
+
 }

@@ -11,6 +11,11 @@ use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\CourseStatusController;
 use App\Http\Controllers\CourseStudentController;
 
+use App\Http\Controllers\CreditsEarnedController;
+
+
+// Route::resource('credits', CreditsEarnedController::class);
+
 /**
  * Authentication Related
  */

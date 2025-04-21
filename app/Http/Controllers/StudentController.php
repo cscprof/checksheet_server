@@ -19,6 +19,7 @@ class StudentController extends Controller
 
         return Student::with('majors')
             ->with('minors')
+            ->with('credits')
             ->where('account_guid',$token)
             ->get();
 
@@ -71,6 +72,7 @@ class StudentController extends Controller
 
         return Student::with('majors')
             ->with('minors')
+            ->with('credits')
             ->where('account_guid',$token)
             ->where('student_id', $id)
             ->first();
