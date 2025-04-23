@@ -10,6 +10,8 @@ use App\Http\Controllers\CoreThemeController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\CourseStatusController;
 use App\Http\Controllers\CourseStudentController;
+use App\Http\Controllers\MajorStudentController;
+use App\Http\Controllers\MinorStudentController;
 
 use App\Http\Controllers\CreditsEarnedController;
 
@@ -36,7 +38,6 @@ Route::get('/courses/core', [CourseController::class, 'coreCourses']);
 Route::resource('courses', CourseController::class);
 Route::resource('corethemes', CoreThemeController::class);
 
-
 /**
  * Student Related Routes
  */
@@ -48,6 +49,17 @@ Route::resource('students', StudentController::class);
  */
 Route::put('studentcourses', [CourseStudentController::class, 'myUpdate']);
 Route::resource('studentcourses', CourseStudentController::class);
+
+/**
+ * Major and Minor mappings
+ */
+Route::resource('majorstudents', MajorStudentController::class)->only([
+    'store', 'destroy'
+]);
+Route::resource('minorstudents', MinorStudentController::class)->only([
+    'store', 'destroy'
+]);
+
 
 /**
  * Dropdown Routes
@@ -64,3 +76,4 @@ Route::resource('coursestatuses', CourseStatusController::class);
 Route::get('/', function () {
     return view('welcome');
 });
+

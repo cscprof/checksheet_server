@@ -46,7 +46,7 @@ class Student extends Model
             'major_id',
             null,
             'major_id'
-        );
+        )->withPivot('major_student_id');
     }
 
     public function minors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -58,7 +58,7 @@ class Student extends Model
             'minor_id',
             null,
             'minor_id'
-        );
+        )->withPivot('minor_student_id');
     }
 
     public function credits()

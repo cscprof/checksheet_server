@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MajorStudent;
+use App\Models\MinorStudent;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\MyUser;
 
-class MajorStudentController extends Controller
+class MinorStudentController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -25,17 +25,17 @@ class MajorStudentController extends Controller
             ], 401);
         }
 
-        // Create the new student major
+        // Create the new student minor
         $data = $request->json()->all();
 
-        $major_student = new MajorStudent();
+        $minor_student = new MinorStudent();
 
-        if (array_key_exists('student_id', $data)) $major_student->student_id = $data['student_id'];
-        if (array_key_exists('major_id', $data)) $major_student->major_id = $data['major_id'];
+        if (array_key_exists('student_id', $data)) $minor_student->student_id = $data['student_id'];
+        if (array_key_exists('minor_id', $data)) $minor_student->minor_id = $data['minor_id'];
 
-        $major_student->save();
+        $minor_student->save();
 
-        return $major_student->major_student_id;
+        return $minor_student->minor_student_id;
     }
 
     /**
@@ -54,8 +54,8 @@ class MajorStudentController extends Controller
             ], 401);
         }
 
-        $id = $request->majorstudent;
-        return MajorStudent::destroy($id);
+        $id = $request->minorstudent;
+        return MinorStudent::destroy($id);
 
 
     }
