@@ -60,7 +60,6 @@ Route::resource('minorstudents', MinorStudentController::class)->only([
     'store', 'destroy'
 ]);
 
-
 /**
  * Dropdown Routes
  */
