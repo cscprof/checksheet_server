@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Major;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class MajorController extends Controller
@@ -18,7 +18,7 @@ class MajorController extends Controller
 
     public function store(Request $request)
     {
-        $token = $request->header('x-token');
+        // $token = $request->header('x-token');
 
         // Verify GUID is valid
 //        try {
@@ -31,7 +31,6 @@ class MajorController extends Controller
 
         // Create the new student major
         $data = $request->json()->all();
-
         $major = new Major();
 
         if (array_key_exists('major_name', $data)) $major->major_name = $data['major_name'];

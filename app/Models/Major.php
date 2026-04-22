@@ -11,6 +11,8 @@ class Major extends Model
 
      protected $primaryKey = 'major_id';
 
+     public $timestamps = false;
+
      /**
      * The attributes that are mass assignable.
      *
